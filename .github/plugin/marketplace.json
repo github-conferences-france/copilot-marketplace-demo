@@ -1,0 +1,25 @@
+{
+  "name": "demo-marketplace",
+  "owner": {
+    "name": "Devoxx 26"
+  },
+  "plugins": [
+    {
+      "name": "devoxx-games",
+      "source": "./plugins/devoxx-games",
+      "description": "Game-focused Copilot CLI skills for the Devoxx demos, including locale support workflows for devoxx-quest.",
+      "version": "1.0.0",
+      "keywords": [
+        "devoxx",
+        "games",
+        "phaser",
+        "localization", .
+        "i18n"
+      ],
+      "tags": [
+        "demo",
+        "game-development"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+name: Verify marketplace docs
+
+on:
+  pull_request:
+    paths:
+      - '.github/plugin/marketplace.json'
+      - '.github/workflows/verify-marketplace-docs.yml'
+      - 'README.md'
+      - 'README.fr.md'
+      - 'plugins/**'
+  push:
+    paths:
+      - '.github/plugin/marketplace.json'
+      - '.github/workflows/verify-marketplace-docs.yml'
+      - 'README.md'
+      - 'README.fr.md'
+      - 'plugins/**'
+
+jobs:
+  verify-marketplace-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify documented plugins
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const repoRoot = process.cwd();
+          const manifestPath = path.join(repoRoot, '.github', 'plugin', 'marketplace.json');
+          const readmeFiles = ['README.md', 'README.fr.md'];
+          const errors = [];
+
+          const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+          const plugins = Array.isArray(manifest.plugins) ? manifest.plugins : [];
+
+          for (const readmeFile of readmeFiles) {
+            const readmePath = path.join(repoRoot, readmeFile);
+
+            if (!fs.existsSync(readmePath)) {
+              errors.push(`Missing required documentation file: ${readmeFile}`);
+            }
+          }
+
+          const readmes = Object.fromEntries(
+            readmeFiles
+              .filter((readmeFile) => fs.existsSync(path.join(repoRoot, readmeFile)))
+              .map((readmeFile) => [readmeFile, fs.readFileSync(path.join(repoRoot, readmeFile), 'utf8')])
+          );
+
+          for (const plugin of plugins) {
+            const pluginName = plugin.name || '<unnamed plugin>';
+            const source = plugin.source;
+
+            if (!source) {
+              errors.push(`Plugin "${pluginName}" is missing its "source" field in .github/plugin/marketplace.json`);
+              continue;
+            }
+
+            const pluginPath = path.resolve(repoRoot, source);
+
+            if (!fs.existsSync(pluginPath) || !fs.statSync(pluginPath).isDirectory()) {
+              errors.push(`Plugin "${pluginName}" references a missing directory: ${source}`);
+            }
+
+            for (const [readmeFile, content] of Object.entries(readmes)) {
+              if (!content.includes(pluginName)) {
+                errors.push(`Plugin "${pluginName}" is not listed in ${readmeFile}`);
+              }
+            }
+          }
+
+          if (errors.length > 0) {
+            console.error('Marketplace documentation verification failed:');
+            for (const error of errors) {
+              console.error(`- ${error}`);
+            }
+            process.exit(1);
+          }
+
+          console.log(`Marketplace documentation verification passed for ${plugins.length} plugin(s).`);
+          NODE

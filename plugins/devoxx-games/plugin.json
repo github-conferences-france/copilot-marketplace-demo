@@ -1,0 +1,16 @@
+{
+  "name": "devoxx-games",
+  "description": "Game-focused Copilot CLI skills for the Devoxx demos, including locale support workflows for devoxx-quest.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Devoxx"
+  },
+  "keywords": [
+    "devoxx",
+    "games",
+    "phaser",
+    "localization",
+    "i18n"
+  ],
+"skills": ["./skills/"]
+}

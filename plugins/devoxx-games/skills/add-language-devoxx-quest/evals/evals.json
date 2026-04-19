@@ -1,0 +1,41 @@
+{
+  "skill_name": "add-language-devoxx-quest",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Je veux ajouter l'espagnol à devoxx-quest",
+      "expected_output": "Appel de add_language_to_devoxx_quest avec code=es, nativeName=Español, englishName=Spanish. Confirmation des fichiers créés.",
+      "files": [],
+      "expectations": [
+        "The tool add_language_to_devoxx_quest is called",
+        "The code parameter is 'es'",
+        "The nativeName parameter is 'Español'",
+        "The englishName parameter is 'Spanish'"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add German support to the game",
+      "expected_output": "Call add_language_to_devoxx_quest with code=de, nativeName=Deutsch, englishName=German.",
+      "files": [],
+      "expectations": [
+        "The tool add_language_to_devoxx_quest is called",
+        "The code parameter is 'de'",
+        "The nativeName parameter is 'Deutsch'",
+        "The englishName parameter is 'German'"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Support japonais dans l'appli devoxx please",
+      "expected_output": "Call add_language_to_devoxx_quest with code=ja, nativeName=日本語, englishName=Japanese.",
+      "files": [],
+      "expectations": [
+        "The tool add_language_to_devoxx_quest is called",
+        "The code parameter is 'ja'",
+        "The nativeName parameter contains Japanese characters",
+        "The englishName parameter is 'Japanese'"
+      ]
+    }
+  ]
+}
