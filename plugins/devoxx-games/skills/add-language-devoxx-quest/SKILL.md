@@ -21,6 +21,7 @@ Use this skill to handle the language addition end-to-end:
 
 2. **Create or update the required files** for that language:
    - Add the locale JSON files
+   - Translate all the UI strings in `{code}-*.json` from English to the target language
    - Register the locale in the i18n setup
    - Make the language selectable in the game settings or preload flow where needed
 

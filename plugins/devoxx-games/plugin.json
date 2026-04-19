@@ -1,7 +1,7 @@
 {
   "name": "devoxx-games",
   "description": "Game-focused Copilot CLI skills for the Devoxx demos, including locale support workflows for devoxx-quest.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Devoxx"
   },
