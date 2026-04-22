@@ -10,17 +10,25 @@ Ce dépôt contient une marketplace locale pour les plugins Copilot CLI utilisé
 
 ## Inventaire actuel
 
-### Plugin
+### Plugins
 
 - `devoxx-games` (`plugins/devoxx-games`)
-  - Version : `1.0.0`
+  - Version : `1.1.1`
   - Description : ensemble de skills orientées jeu pour les démos Devoxx, notamment les workflows de support de langues pour devoxx-quest.
 
-### Skill
+- `gps-processing` (`plugins/gps-processing`)
+  - Version : `1.1.0`
+  - Description : skills d'analyse de fichiers GPX : calcul de distances (km, miles, milles nautiques), comptage de trackpoints et extraction de métadonnées GPS.
 
-- `add-language-devoxx-quest`
+### Skills
+
+- `add-language-devoxx-quest` (plugin : `devoxx-games`)
   - Emplacement : `plugins/devoxx-games/skills/add-language-devoxx-quest/SKILL.md`
   - Rôle : ajouter une nouvelle langue/locale au jeu Phaser `devoxx-quest` en générant les fichiers de locale et en modifiant les sources du jeu.
+
+- `gpx-management` (plugin : `gps-processing`)
+  - Emplacement : `plugins/gps-processing/skills/gpx-management/SKILL.md`
+  - Rôle : analyser des fichiers GPX pour calculer la distance totale (km, miles, milles nautiques), compter les trackpoints et extraire les métadonnées de la trace.
 
 ## Structure de la marketplace
 
@@ -29,7 +37,7 @@ La racine de la marketplace est déclarée dans `.github/plugin/marketplace.json
 - nom de la marketplace : `demo-marketplace`
 - racine des plugins : `./plugins`
 
-Aujourd’hui, cette marketplace expose un seul plugin : `devoxx-games`.
+Aujourd'hui, cette marketplace expose deux plugins : `devoxx-games` et `gps-processing`.
 
 ## Utilisation du dépôt
 

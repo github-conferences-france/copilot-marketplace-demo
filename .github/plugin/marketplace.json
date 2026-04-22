@@ -8,7 +8,7 @@
       "name": "devoxx-games",
       "source": "./plugins/devoxx-games",
       "description": "Game-focused Copilot CLI skills for the Devoxx demos, including locale support workflows for devoxx-quest.",
-      "version": "1.0.1",
+      "version": "1.1.1",
       "keywords": [
         "devoxx",
         "games",
@@ -19,6 +19,24 @@
       "tags": [
         "demo",
         "game-development"
+      ]
+    },
+    {
+      "name": "gps-processing",
+      "source": "./plugins/gps-processing",
+      "description": "GPX file analysis skills: calculate distances (km, miles, nautical miles), count trackpoints, and extract metadata from GPS tracks.",
+      "version": "1.1.0",
+      "keywords": [
+        "gpx",
+        "gps",
+        "tracking",
+        "distance",
+        "haversine",
+        "geospatial"
+      ],
+      "tags": [
+        "demo",
+        "geospatial"
       ]
     }
   ]
